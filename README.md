@@ -12,7 +12,7 @@ Passionate Frontend Developer turning ideas into interactive, visually appealing
 
 ```bash
 # Clone this app
-git clone https://github.com/username/main-portfolio.git
+git clone https://github.com/username/portfolio-fe.git
 
 # Go to the project directory
 cd main-portfolio
