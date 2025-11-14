@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-const apiUrl = import.meta.env.VITE_LOCAL_API;
+const apiUrl =
+  import.meta.env.VITE_LOCAL_API || import.meta.env.VITE_PRODUCTION_API;
 
 type TAccountState = {
   username: string;
