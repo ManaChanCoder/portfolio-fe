@@ -26,16 +26,16 @@ const Project = () => {
       <div className="p-5">
         <div className="d-flex justify-content-between align-items-center">
           <h1>Projects</h1>
-          <span className="d-flex fs-5">
+          <span className="d-flex align-items-end gap-2 fs-5">
             <span className="">Total:</span>{" "}
             {loading ? (
               <ThreeDots
-                height="20"
-                width="20"
+                height="30"
+                width="30"
                 radius="9"
-                color="#044d88ff"
+                color="#4fa94d"
                 ariaLabel="three-dots-loading"
-                wrapperStyle={{ margin: "20px" }}
+                // wrapperStyle={{ margin: "20px" }}
                 wrapperClass="custom-loader"
                 visible={true}
               />
@@ -50,7 +50,7 @@ const Project = () => {
               height="100"
               width="100"
               radius="9"
-              color="#044d88ff"
+              color="#4fa94d"
               ariaLabel="three-dots-loading"
               wrapperStyle={{ margin: "20px" }}
               wrapperClass="custom-loader"
