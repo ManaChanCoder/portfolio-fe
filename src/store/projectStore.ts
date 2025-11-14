@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
-const apiUrl = import.meta.env.VITE_LOCAL_API;
+const apiUrl =
+  import.meta.env.VITE_PRODUCTION_API || import.meta.env.VITE_LOCAL_API;
 
 type TProjectState = {
   _id?: string;
