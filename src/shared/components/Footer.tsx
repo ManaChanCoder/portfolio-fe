@@ -9,10 +9,12 @@ export default function Footer() {
 
   return (
     <div className={isDark ? "footer-dark" : "footer-light"}>
-      <footer className="d-flex justify-content-between py-3 px-5 container-fluid">
-        <span>ManachanCoder © 2025</span>
-        <span>Frontend Developer | Slight Knowledgeable in MERN Stack</span>
-        <div className="d-flex gap-3">
+      <footer className="d-flex flex-column flex-md-row gap-2 gap-md-0 justify-content-between py-3 px-5 container-fluid">
+        <span className="text-center">ManachanCoder © 2025</span>
+        <span className="text-center">
+          Frontend Developer | Slight Knowledgeable in MERN Stack
+        </span>
+        <div className="d-flex justify-content-center justify-content-md-start gap-3">
           <a
             href="https://github.com/ManaChanCoder?tab=repositories"
             className={`underline-none ${isDark ? "text-white" : "text-black"}`}

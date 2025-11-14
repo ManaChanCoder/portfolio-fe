@@ -76,7 +76,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`offcanvas offcanvas-end w-50 ${
+        className={`offcanvas offcanvas-end w-75 ${
           isDark ? "dark-bg" : "light-bg"
         }`}
         data-bs-scroll="true"
