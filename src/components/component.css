@@ -1,0 +1,59 @@
+.light-bg {
+  background: var(--main-bg);
+  color: var(--primary-text);
+}
+.dark-bg {
+  background: var(--main-bg-dark);
+  color: var(--primary-text-dark);
+}
+.form-bg-light {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  background: var(--main-bg-dark);
+  color: var(--card-bg);
+}
+.form-bg-dark {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  background: var(--main-bg);
+  color: var(--primary-text);
+}
+.login-btn-light {
+  background: var(--main-bg);
+  color: var(--primary-text);
+
+  transition: all 0.2s ease;
+}
+.login-btn-light:hover {
+  background: var(--border-divider);
+}
+.login-btn-dark {
+  background: var(--main-bg-dark);
+  color: var(--main-bg);
+
+  transition: all 0.2s ease;
+}
+.login-btn-dark:hover {
+  background: var(--footer-text);
+}
+.input-dark-mode {
+  border-bottom: 1px solid var(--main-bg-dark);
+}
+.card-container {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.login-size {
+  width: 35%;
+}
+@media (max-width: 768px) {
+  .login-size {
+    width: 70%;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .login-size {
+    width: 50%;
+  }
+}

@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  /* light theme */
+  --main-bg: #f9fafb;
+  --primary-text: #111827;
+  --secondary-text: #4b5563;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --card-bg: #ffffff;
+  --border-divider: #e5e7eb;
+  --footer-bg: #f3f4f6;
+  --footer-text: #374151;
+
+  /* dark theme */
+  --main-bg-dark: #111827;
+  --primary-text-dark: #f9fafb;
+  --secondary-text-dark: #9ca3af;
+  --accent-color-dark: #3b82f6;
+  --accent-hover-dark: #60a5fa;
+  --card-bg-dark: #1f2937;
+  --border-divider-dark: #374151;
+  --footer-bg-dark: #1e293b;
+  --footer-text-dark: #d1d5db;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--main-bg);
+}
+
+/* default */
+.no-underline {
+  text-decoration: none;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.outline-none {
+  outline: none;
+}
+
+/* light */
+.link {
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+.link:hover {
+  color: var(--accent-hover);
+}
+
+.light-bg {
+  background-color: var(--main-bg);
+  color: var(--primary-text);
+}
+.dark-bg {
+  background-color: var(--main-bg-dark);
+  color: var(--primary-text-dark);
+}
+.light-sec-text {
+  color: var(--secondary-text);
+}
+.dark-sec-text {
+  color: var(--secondary-text-dark);
+}
+.fs-7 {
+  font-size: 14px;
+}
+.fs-8 {
+  font-size: 12px;
+}
+.btn-light {
+  background: var(--accent-color);
+  color: #ffffff;
+  border: none;
+}
+.btn-light:hover {
+  background: var(--accent-hover);
+}
+.btn-dark {
+  background: var(--accent-color-dark);
+  color: #ffffff;
+  border: none;
+}
+.btn-dark:hover {
+  background: var(--accent-hover-dark);
+}
