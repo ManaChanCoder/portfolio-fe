@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
+import { motion } from "framer-motion";
 
 // components
 import Navbar from "../shared/components/Navbar";
@@ -41,10 +42,19 @@ const Home = () => {
     fetchProj();
   }, [fetchProj]);
   return (
-    <div className={`${isDark ? "dark-bg text-white" : "light-bg text-black"}`}>
+    <div
+      className={`overflow-hidden ${
+        isDark ? "dark-bg text-white" : "light-bg text-black"
+      }`}
+    >
       <Navbar />
       <div className="banner my-5">
-        <div className="banner-c-size px-5">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, type: "spring", stiffness: 50 }}
+          className="banner-c-size px-5"
+        >
           <h1 className="fw-bold m-0">Hi, I'm Rhogenn</h1>
           <p className="fs-5 fw-medium light-sec-text">
             Aspiring Frontend Developer.
@@ -67,17 +77,32 @@ const Home = () => {
           >
             Download Resume
           </button>
-        </div>
+        </motion.div>
 
-        <div className="banner-c-size d-flex justify-content-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
+          className="banner-c-size d-flex justify-content-center"
+        >
           <img src={MyImg} alt="my_img" loading="lazy" style={imgSize} />
-        </div>
+        </motion.div>
       </div>
 
       <div className="">
         <h1 className="text-center fw-bold">Passion</h1>
 
-        <div className="d-flex flex-column align-items-center mb-3">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 50,
+            delay: 0.5,
+          }}
+          className="d-flex flex-column align-items-center mb-3"
+        >
           <p className="w-75 text-center">
             I have basic knowledge of HTML, CSS, and JavaScript, which I use to
             build simple and responsive user interfaces. I work with React.js to
@@ -95,7 +120,17 @@ const Home = () => {
             understand problem-solving better, and keep progressing at my own
             pace.
           </p>
-          <div className="d-flex flex-column gap-3 mb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 2.7, y: 0 }}
+            transition={{
+              duration: 1,
+              type: "spring",
+              stiffness: 50,
+              delay: 0.5,
+            }}
+            className="d-flex flex-column gap-3 mb-5"
+          >
             <div className="d-flex justify-content-center gap-3">
               <FaHtml5 size={40} className="text-danger p-icon" />
               <FaReact size={40} className="text-info p-icon" />
@@ -115,11 +150,17 @@ const Home = () => {
                 className={`p-icon ${isDark ? "text-light" : "text-dark"}`}
               />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="px-5 pb-3 mb-2">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 4, type: "spring", stiffness: 50, delay: 1 }}
+        viewport={{ once: true, amount: 1 }}
+        className="px-5 pb-3 mb-2"
+      >
         <h1 className="text-center fw-bold mb-4">Projects</h1>
         <div className="d-flex justify-content-center">
           {loading && (
@@ -161,7 +202,7 @@ const Home = () => {
             View All
           </button>
         </div>
-      </div>
+      </motion.div>
       <Footer />
     </div>
   );

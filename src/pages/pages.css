@@ -47,4 +47,7 @@
   .banner-c-size {
     width: 100%;
   }
+  .banner-c-size > img {
+    width: 100px;
+  }
 }

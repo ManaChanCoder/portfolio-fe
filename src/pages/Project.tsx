@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import { motion } from "framer-motion";
+
 // components
 import Navbar from "../shared/components/Navbar";
 import ProjectCard from "../components/ProjectCard";
@@ -24,7 +26,16 @@ const Project = () => {
       <Navbar />
 
       <div className="p-5">
-        <div className="d-flex justify-content-between align-items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            type: "spring",
+            stiffness: 50,
+          }}
+          className="d-flex justify-content-between align-items-center"
+        >
           <h1>Projects</h1>
           <span className="d-flex align-items-end gap-2 fs-5">
             <span className="">Total:</span>{" "}
@@ -43,7 +54,7 @@ const Project = () => {
               computedProj
             )}
           </span>
-        </div>
+        </motion.div>
         {loading ? (
           <div className="d-flex justify-content-center align-items-center">
             <ThreeDots

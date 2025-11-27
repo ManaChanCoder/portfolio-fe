@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import "./pages.css";
 // store
 import { themeStore } from "../store/themeStore";
@@ -90,11 +92,27 @@ const Resume = () => {
     >
       <Navbar />
       <div className="p-5">
-        <h1>Resume</h1>
+        <motion.h1
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, type: "spring", stiffness: 50 }}
+        >
+          Resume
+        </motion.h1>
         <hr />
         {/* resume container */}
         <div className="row">
-          <div className="col-sm-12 col-lg-5">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.4,
+              type: "spring",
+              stiffness: 50,
+              delay: 0.2,
+            }}
+            className="col-sm-12 col-lg-5"
+          >
             <div className="mb-3">
               <h6 className="text-uppercase">Language</h6>
               <span className="d-block">Filipino (Native)</span>
@@ -233,7 +251,7 @@ const Resume = () => {
               <p>
                 Portfolio:{" "}
                 <a
-                  href="https://portfolio-rouge-kappa-51psbs5zyi.vercel.app"
+                  href="https://portfolio-fe-gamma.vercel.app/"
                   target="_blank"
                 >
                   Click me
@@ -251,9 +269,19 @@ const Resume = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="col-sm-12 col-lg-7">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.4,
+              type: "spring",
+              stiffness: 50,
+              delay: 0.2,
+            }}
+            className="col-sm-12 col-lg-7"
+          >
             <div className="mb-3">
               <h1>Rhogenn G. Saingga</h1>
               <h5>Aspiring Frontend Developer</h5>
@@ -298,7 +326,7 @@ const Resume = () => {
               </ul>
               <hr />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
