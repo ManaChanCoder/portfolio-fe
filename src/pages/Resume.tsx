@@ -87,7 +87,7 @@ const Resume = () => {
 
   return (
     <div
-      className={`${isDark ? "dark-bg" : "light-bg"}`}
+      className={`overflow-hidden ${isDark ? "dark-bg" : "light-bg"}`}
       style={{ minHeight: "100vh", maxHeight: "100%" }}
     >
       <Navbar />
