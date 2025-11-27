@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 import { themeStore } from "../store/themeStore";
 import { accountStore } from "../store/accountStore";
@@ -76,7 +77,14 @@ export default function Login() {
           strokeWidthSecondary={2}
         />
       ) : (
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.2,
+            type: "spring",
+            stiffness: 50,
+          }}
           className={`login-size px-3 py-4 rounded-2 ${
             isDark ? "form-bg-dark" : "form-bg-light"
           }`}
@@ -138,7 +146,7 @@ export default function Login() {
               Login
             </button>
           </form>
-        </div>
+        </motion.div>
       )}
     </div>
   );
