@@ -352,9 +352,9 @@ const Resume = () => {
         <motion.button
           initial={{scale: 0}}
           animate={{
-    scale: isVisible ? 1 : 0,
+    scale: 1,
 
-    pointerEvents: isVisible ? "auto" : "none",
+
   }}
           transition={{
             type: "spring",
