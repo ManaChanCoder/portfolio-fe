@@ -353,7 +353,7 @@ const Resume = () => {
           initial={false}
           animate={{
     scale: isVisible ? 1 : 0,
-    opacity: isVisible ? 1 : 0,
+    scale: isVisible ? 1 : 0,
     pointerEvents: isVisible ? "auto" : "none",
   }}
           transition={{
