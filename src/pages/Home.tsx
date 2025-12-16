@@ -205,7 +205,7 @@ const Home = () => {
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{
                     type: "spring",
                     stiffness: 100,
