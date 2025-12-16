@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 import "./pages.css";
 // store
 import { themeStore } from "../store/themeStore";
+import { scrollBehavior } from "../store/themeStore";
 
 // components
 import Navbar from "../shared/components/Navbar";
@@ -12,6 +14,7 @@ import { LuBriefcaseBusiness } from "react-icons/lu";
 import { FiTool } from "react-icons/fi";
 import { CiLink } from "react-icons/ci";
 import { FaRegLightbulb } from "react-icons/fa";
+import { IoArrowUp } from "react-icons/io5";
 
 type TToolState = {
   tool?: string;
@@ -29,6 +32,22 @@ type TEducationState = {
 
 const Resume = () => {
   const isDark = themeStore((state) => state.isDark);
+  const { isVisible, setVisible } = scrollBehavior();
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setVisible(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, [setVisible]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const toolsUsed: TToolState[] = [
     { tool: "Git & Github", description: "Basic version control" },
@@ -329,6 +348,23 @@ const Resume = () => {
           </motion.div>
         </div>
       </div>
+      {isVisible && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 12,
+            duration: 0.5,
+          }}
+          onClick={scrollToTop}
+          style={{ bottom: "20px", right: "20px" }}
+          className="position-fixed btn btn-primary text-white rounded-cirle py-2 px-3 rounded-circle"
+        >
+          <IoArrowUp size={25} />
+        </motion.button>
+      )}
     </div>
   );
 };
