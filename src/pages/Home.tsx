@@ -204,8 +204,7 @@ const Home = () => {
               {displayedProj.map((v) => (
                 <motion.div
                   initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  animate={{ scale: 1 }}
                   transition={{
                     type: "spring",
                     stiffness: 100,
