@@ -350,7 +350,7 @@ const Resume = () => {
       </div>
       {isVisible && (
         <motion.button
-          initial={false}
+          initial={{scale: 0}}
           animate={{
     scale: isVisible ? 1 : 0,
 
