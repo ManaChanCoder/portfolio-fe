@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+// import type { CSSProperties } from "react";
 type TProjectCardSate = {
   title: string;
   description: string;
@@ -6,11 +6,14 @@ type TProjectCardSate = {
   liveLink: string;
   urlImg: string;
 };
-type ButtonState = CSSProperties;
+// type ButtonState = CSSProperties;
 
 // icons
 import { FaGithub } from "react-icons/fa";
 import { MdEmojiPeople } from "react-icons/md";
+
+// components
+import { trimByWords } from "../utility/wordTrim";
 
 // store
 import { themeStore } from "../store/themeStore";
@@ -22,12 +25,6 @@ const ProjectCard = ({
   liveLink,
   urlImg,
 }: TProjectCardSate) => {
-  const buttonStyle: ButtonState = {
-    position: "absolute",
-    bottom: "20px",
-    right: "10px",
-  };
-
   const isDark = themeStore((state) => state.isDark);
 
   return (
@@ -37,38 +34,40 @@ const ProjectCard = ({
       }`}
     >
       <div
-        className="row rounded-3 card-container pb-3 position-relative"
-        style={{ minHeight: "600px", height: "100%" }}
+        className="row rounded-3 card-container pb-3 d-flex flex-column"
+        style={{ minHeight: "600px" }}
       >
+        {/* Image */}
         <div className="col-12 p-0">
           <img
             src={urlImg}
             alt="project image"
             style={{ height: "230px", width: "100%" }}
-            className=" rounded-top-3"
+            className="rounded-top-3"
           />
         </div>
 
-        <div className="col-12 my-3">
-          <h3 className="fw-semibold">{title}</h3>
-          <p>{description}</p>
+        {/* Content */}
+        <div className="col-12 my-3 flex-grow-1">
+          <h3 className="fw-semibold fs-5 my-3">{title}</h3>
+          <p className="fs-6 opacity-75">{trimByWords(description, 55)}</p>
         </div>
 
-        <div className="col-12" style={buttonStyle}>
-          <div className="d-flex gap-2 justify-content-end">
+        {/* Buttons */}
+        <div className="col-12 mt-auto">
+          <div className="d-flex gap-2 justify-content-end px-3">
             <a
               href={demoCode}
               className="no-underline d-flex align-items-center gap-2 btn btn-primary"
             >
-              Code
-              <FaGithub size={18} />
+              Code <FaGithub size={18} />
             </a>
+
             <a
               href={liveLink}
-              className="no-underline d-flex gap-2 align-items-center btn btn-primary"
+              className="no-underline d-flex align-items-center gap-2 btn btn-primary"
             >
-              Demo
-              <MdEmojiPeople size={18} />
+              Demo <MdEmojiPeople size={18} />
             </a>
           </div>
         </div>

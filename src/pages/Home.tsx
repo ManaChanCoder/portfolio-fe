@@ -12,9 +12,10 @@ import "./pages.css";
 // store
 import { themeStore } from "../store/themeStore";
 import { projectStore } from "../store/projectStore";
+import { scrollBehavior } from "../store/themeStore";
 
 // img
-import MyImg from "../assets/Grad Pic - Toga (2).jpg";
+import MyImg from "../assets/img-1.png";
 import {
   FaReact,
   FaHtml5,
@@ -25,11 +26,13 @@ import {
   FaNode,
 } from "react-icons/fa";
 import { SiMongodb, SiTailwindcss } from "react-icons/si";
+import { IoArrowUp } from "react-icons/io5";
 
 const Home = () => {
   const navigate = useNavigate();
   const isDark = themeStore((state) => state.isDark);
   const { fetchProj, projects, loading } = projectStore();
+  const { isVisible, setVisible } = scrollBehavior();
   const limit: number = 3;
   const displayedProj = projects.slice(0, limit);
   const imgSize = {
@@ -40,7 +43,22 @@ const Home = () => {
 
   useEffect(() => {
     fetchProj();
-  }, [fetchProj]);
+
+    const toggleVisibility = () => {
+      setVisible(window.scrollY > 700);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("toggle", toggleVisibility);
+  }, [fetchProj, setVisible]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  console.log(isVisible);
+
   return (
     <div
       className={`overflow-hidden ${
@@ -94,12 +112,12 @@ const Home = () => {
 
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{
-            duration: 1,
+            duration: 0.5,
             type: "spring",
             stiffness: 50,
-            delay: 0.5,
           }}
           className="d-flex flex-column align-items-center mb-3"
         >
@@ -156,17 +174,22 @@ const Home = () => {
 
       <motion.div
         initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 4, type: "spring", stiffness: 50, delay: 1 }}
-        viewport={{ once: true, amount: 1 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 0.5,
+          type: "spring",
+          stiffness: 100,
+          damping: 12,
+        }}
+        viewport={{ once: true, amount: 0.5 }}
         className="px-5 pb-3 mb-2"
       >
         <h1 className="text-center fw-bold mb-4">Projects</h1>
         <div className="d-flex justify-content-center">
           {loading && (
             <Oval
-              height={80}
-              width={80}
+              height={40}
+              width={40}
               color="#4fa94d"
               visible={true}
               ariaLabel="oval-loading"
@@ -179,7 +202,19 @@ const Home = () => {
           {projects.length + 1 > 0 ? (
             <div className="row">
               {displayedProj.map((v) => (
-                <div key={v._id} className="col-sm-12 col-md-6 col-xl-4">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                    mass: 1,
+                  }}
+                  key={v._id}
+                  className="col-sm-12 col-md-6 col-xl-4"
+                >
                   <ProjectCard
                     title={v.title}
                     description={v.description}
@@ -187,7 +222,7 @@ const Home = () => {
                     liveLink={v.liveLink}
                     urlImg={v.urlImg}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           ) : (
@@ -204,6 +239,24 @@ const Home = () => {
         </div>
       </motion.div>
       <Footer />
+
+      {isVisible && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 12,
+            mass: 1,
+          }}
+          onClick={scrollToTop}
+          style={{ bottom: "100px", right: "20px" }}
+          className="position-fixed btn btn-primary text-white rounded-cirle py-2 px-3 rounded-circle"
+        >
+          <IoArrowUp size={25} />
+        </motion.button>
+      )}
     </div>
   );
 };

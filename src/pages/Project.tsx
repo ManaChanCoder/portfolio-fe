@@ -9,14 +9,32 @@ import ProjectCard from "../components/ProjectCard";
 // store
 import { themeStore } from "../store/themeStore";
 import { projectStore } from "../store/projectStore";
+import { scrollBehavior } from "../store/themeStore";
+
+// icons
+import { IoArrowUp } from "react-icons/io5";
 
 const Project = () => {
   const isDark = themeStore((state) => state.isDark);
   const { fetchProj, projects, loading, computedProj } = projectStore();
+  const { isVisible, setVisible } = scrollBehavior();
 
   useEffect(() => {
     fetchProj();
+
+    const toggleVisibility = () => {
+      setVisible(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, [fetchProj]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div
@@ -41,8 +59,8 @@ const Project = () => {
             <span className="">Total:</span>{" "}
             {loading ? (
               <ThreeDots
-                height="30"
-                width="30"
+                height="20"
+                width="20"
                 radius="9"
                 color="#4fa94d"
                 ariaLabel="three-dots-loading"
@@ -58,8 +76,8 @@ const Project = () => {
         {loading ? (
           <div className="d-flex justify-content-center align-items-center">
             <ThreeDots
-              height="100"
-              width="100"
+              height="50"
+              width="50"
               radius="9"
               color="#4fa94d"
               ariaLabel="three-dots-loading"
@@ -84,6 +102,25 @@ const Project = () => {
           </div>
         )}
       </div>
+
+      {isVisible && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 12,
+            mass: 1,
+            duration: 0.8,
+          }}
+          onClick={scrollToTop}
+          style={{ bottom: "20px", right: "20px" }}
+          className="position-fixed btn btn-primary text-white rounded-cirle py-2 px-3 rounded-circle"
+        >
+          <IoArrowUp size={25} />
+        </motion.button>
+      )}
     </div>
   );
 };

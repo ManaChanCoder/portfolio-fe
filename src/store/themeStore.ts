@@ -16,3 +16,14 @@ export const themeStore = create<TThemeState>()(
     { name: "theme-storage" }
   )
 );
+
+// for scroll behabior
+type ScrollState = {
+  isVisible: boolean;
+  setVisible: (val: boolean) => void;
+};
+
+export const scrollBehavior = create<ScrollState>((set) => ({
+  isVisible: false,
+  setVisible: (value) => set({ isVisible: value }),
+}));
