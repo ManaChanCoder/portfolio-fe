@@ -48,7 +48,7 @@ const Home = () => {
       setVisible(window.scrollY > 700);
     };
     window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("toggle", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, [fetchProj]);
 
   const scrollToTop = () => {
