@@ -49,7 +49,7 @@ const Home = () => {
     };
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
-  }, [fetchProj,setVisible]);
+  }, [fetchProj, setVisible]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -113,7 +113,7 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
             duration: 0.5,
             type: "spring",
@@ -173,15 +173,14 @@ const Home = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
         transition={{
-          duration: 0.5,
           type: "spring",
           stiffness: 100,
           damping: 12,
+          duration: 0.5,
         }}
-        viewport={{ once: true, amount: 0.5 }}
         className="px-5 pb-3 mb-2"
       >
         <h1 className="text-center fw-bold mb-4">Projects</h1>
@@ -202,18 +201,7 @@ const Home = () => {
           {projects.length + 1 > 0 ? (
             <div className="row">
               {displayedProj.map((v) => (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 12,
-                    mass: 1,
-                  }}
-                  key={v._id}
-                  className="col-sm-12 col-md-6 col-xl-4"
-                >
+                <div key={v._id} className="col-sm-12 col-md-6 col-xl-4">
                   <ProjectCard
                     title={v.title}
                     description={v.description}
@@ -221,7 +209,7 @@ const Home = () => {
                     liveLink={v.liveLink}
                     urlImg={v.urlImg}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           ) : (

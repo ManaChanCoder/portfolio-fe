@@ -1,4 +1,4 @@
-// import type { CSSProperties } from "react";
+import { motion } from "framer-motion";
 type TProjectCardSate = {
   title: string;
   description: string;
@@ -6,7 +6,6 @@ type TProjectCardSate = {
   liveLink: string;
   urlImg: string;
 };
-// type ButtonState = CSSProperties;
 
 // icons
 import { FaGithub } from "react-icons/fa";
@@ -29,11 +28,18 @@ const ProjectCard = ({
 
   return (
     <div
-      className={`container-fluid my-3 mx-2 ${
-        isDark ? "text-white" : "text-black"
-      }`}
+      className={`container-fluid m-2 ${isDark ? "text-white" : "text-black"}`}
     >
-      <div
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 50,
+          duration: 0.3,
+        }}
         className="row rounded-3 card-container pb-3 d-flex flex-column"
         style={{ minHeight: "600px" }}
       >
@@ -71,7 +77,7 @@ const ProjectCard = ({
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
