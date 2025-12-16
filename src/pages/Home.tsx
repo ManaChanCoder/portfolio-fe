@@ -49,7 +49,7 @@ const Home = () => {
     };
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("toggle", toggleVisibility);
-  }, [fetchProj, setVisible]);
+  }, [fetchProj]);
 
   const scrollToTop = () => {
     window.scrollTo({
