@@ -68,14 +68,14 @@ const Resume = () => {
     {
       schoolName: "Marick Elementary School",
       gradeLvl: "Elementary",
-      yearSE: "2014 - 2015",
+      yearSE: "2007 - 2015",
       address: "H4M6+FJ5, Gloria St, Cainta, 1900 Rizal",
     },
     // Highschool
     {
       schoolName: "Francisco P. Felix Memorial National Highschool",
       gradeLvl: "Secondary",
-      yearSE: "2018 - 2019",
+      yearSE: "2015 - 2019",
       address: "Municipal Compound, Sto Domingo, Cainta, 1900 Rizal",
     },
     // K-12
@@ -350,12 +350,10 @@ const Resume = () => {
       </div>
       {isVisible && (
         <motion.button
-          initial={{scale: 0}}
+          initial={{ scale: 0 }}
           animate={{
-    scale: 1,
-
-
-  }}
+            scale: 1,
+          }}
           transition={{
             type: "spring",
             stiffness: 100,
