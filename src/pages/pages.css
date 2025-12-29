@@ -32,6 +32,9 @@
 .banner-c-size {
   width: 50%;
 }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .table-size {

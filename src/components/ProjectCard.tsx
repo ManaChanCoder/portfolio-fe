@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 type TProjectCardSate = {
   title: string;
   description: string;
@@ -30,16 +30,7 @@ const ProjectCard = ({
     <div
       className={`container-fluid m-2 ${isDark ? "text-white" : "text-black"}`}
     >
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 50,
-          duration: 0.3,
-        }}
+      <div
         className="row rounded-3 card-container pb-3 d-flex flex-column"
         style={{ minHeight: "600px" }}
       >
@@ -77,7 +68,7 @@ const ProjectCard = ({
             </a>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

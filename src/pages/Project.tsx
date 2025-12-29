@@ -87,7 +87,7 @@ const Project = () => {
             />
           </div>
         ) : (
-          <div className="row mt-5">
+          <div className="row mt-5 row-gap-3">
             {projects.map((v) => (
               <div key={v._id} className="col-sm-12 col-md-6 col-lg-4">
                 <ProjectCard

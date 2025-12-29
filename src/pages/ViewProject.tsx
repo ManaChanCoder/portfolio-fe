@@ -57,7 +57,7 @@ const ViewProject = () => {
                 <div className="card-body mb-5">
                   <h5 className="card-title mb-3">{v?.title}</h5>
                   <p
-                    className="card-text overflow-y-scroll"
+                    className="card-text overflow-y-scroll hide-scrollbar"
                     style={{ maxHeight: "150px" }}
                   >
                     {v?.description}
