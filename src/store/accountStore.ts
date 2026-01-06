@@ -11,6 +11,7 @@ type TAccountState = {
   loading: boolean;
   login: (username: string, password: string) => Promise<{ success: boolean }>;
   logout: () => void;
+  checkAuth: () => Promise<boolean>;
 };
 
 export const accountStore = create<TAccountState>()(
@@ -34,6 +35,8 @@ export const accountStore = create<TAccountState>()(
             body: JSON.stringify({ username, password }),
           });
           const data = await res.json();
+          localStorage.setItem("token", data.token);
+
           if (!res.ok) {
             throw new Error(data.message || "login failed");
           }
@@ -46,7 +49,39 @@ export const accountStore = create<TAccountState>()(
           return { success: false };
         }
       },
-      logout: () => set({ username: "", isLoggedIn: false }),
+      logout: () => {
+        localStorage.removeItem("token");
+        console.log("it clicked");
+        set({ username: "", isLoggedIn: false });
+      },
+
+      checkAuth: async () => {
+        const token = localStorage.getItem("token");
+        if (!token) return false;
+
+        try {
+          const res = await fetch(`${apiUrl}/account/dashboard`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          if (!res.ok) {
+            localStorage.removeItem("token");
+            set({ isLoggedIn: false, username: "" });
+            return false;
+          }
+
+          const data = await res.json();
+          set({ isLoggedIn: true, username: data.username });
+          return true;
+        } catch (error) {
+          console.log(`Internal Error: ${error}`);
+          localStorage.removeItem("token");
+          set({ isLoggedIn: false, username: "" });
+          return false;
+        }
+      },
     }),
     {
       name: "account-storage",
