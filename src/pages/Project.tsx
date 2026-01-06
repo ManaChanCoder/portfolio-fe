@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // components
 import Navbar from "../shared/components/Navbar";
@@ -103,24 +103,27 @@ const Project = () => {
         )}
       </div>
 
-      {isVisible && (
-        <motion.button
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 12,
-            mass: 1,
-            duration: 0.8,
-          }}
-          onClick={scrollToTop}
-          style={{ bottom: "20px", right: "20px" }}
-          className="position-fixed btn btn-primary text-white rounded-cirle py-2 px-3 rounded-circle"
-        >
-          <IoArrowUp size={25} />
-        </motion.button>
-      )}
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 12,
+              mass: 1,
+              duration: 0.8,
+            }}
+            onClick={scrollToTop}
+            style={{ bottom: "20px", right: "20px" }}
+            className="position-fixed btn btn-primary text-white rounded-cirle py-2 px-3 rounded-circle"
+          >
+            <IoArrowUp size={25} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

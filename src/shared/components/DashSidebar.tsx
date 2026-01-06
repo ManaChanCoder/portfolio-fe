@@ -17,7 +17,7 @@ type TSidebarState = {
 
 const DashSidebar = () => {
   const { isDark, toggleTheme } = themeStore();
-  const { username, logout, isLoggedIn } = accountStore();
+  const { username, logout, checkAuth, isLoggedIn } = accountStore();
   const navigate = useNavigate();
   const [openProj, setOpenProj] = useState<boolean>(false);
   const [time, setTime] = useState<string>("");
@@ -37,12 +37,12 @@ const DashSidebar = () => {
       link: "view/project",
     },
   ];
-
+  console.log(username);
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn, navigate]);
+    checkAuth().then((ok) => {
+      if (!ok) navigate("/");
+    });
+  }, [checkAuth, navigate, isLoggedIn]);
 
   useEffect(() => {
     const updateTime = () => {

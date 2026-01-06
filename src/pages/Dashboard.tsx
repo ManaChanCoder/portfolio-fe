@@ -16,6 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchProj();
   }, [fetchProj]);
+
   return (
     <div className={`w-100 p-3 ${isDark ? "dark-bg" : "light-bg"}`}>
       <h2 className="text-center">Administration Dashboard</h2>

@@ -21,7 +21,7 @@ export default function Login() {
   const isDark = themeStore((state) => state.isDark);
   const [showPassword, setShowPassword] = useState(false);
   // const login = accountStore((state) => state.login);
-  const { login, isLoggedIn, loading } = accountStore();
+  const { login, checkAuth, loading, isLoggedIn } = accountStore();
   const [user, setUser] = useState<TAccountState>({
     username: "",
     password: "",
@@ -29,10 +29,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/admin/welcome");
-    }
-  }, [isLoggedIn, navigate]);
+    checkAuth().then((ok) => {
+      if (ok) navigate("/admin/welcome");
+    });
+  }, [checkAuth, navigate, isLoggedIn]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
