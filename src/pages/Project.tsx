@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ThreeDots } from "react-loader-spinner";
+import { ThreeDots, Oval } from "react-loader-spinner";
 import { motion, AnimatePresence } from "framer-motion";
 
 // components
@@ -60,9 +60,9 @@ const Project = () => {
             {loading ? (
               <ThreeDots
                 height="20"
-                width="20"
-                radius="9"
-                color="#4fa94d"
+                width="25"
+                radius="10"
+                color={`${isDark ? "#fff" : "#080c80"}`}
                 ariaLabel="three-dots-loading"
                 // wrapperStyle={{ margin: "20px" }}
                 wrapperClass="custom-loader"
@@ -74,16 +74,16 @@ const Project = () => {
           </span>
         </motion.div>
         {loading ? (
-          <div className="d-flex justify-content-center align-items-center">
-            <ThreeDots
-              height="50"
-              width="50"
-              radius="9"
-              color="#4fa94d"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{ margin: "20px" }}
-              wrapperClass="custom-loader"
+          <div className="position-absolute start-50 top-50">
+            <Oval
+              height={50}
+              width={50}
+              color="#ffffff"
               visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#080c80"
+              strokeWidth={5}
+              strokeWidthSecondary={3}
             />
           </div>
         ) : (

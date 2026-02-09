@@ -15,7 +15,8 @@ import { projectStore } from "../store/projectStore";
 import { scrollBehavior } from "../store/themeStore";
 
 // img
-import MyImg from "../assets/img-1.png";
+import MyImg1 from "../assets/img-1.jpg";
+import MyImg2 from "../assets/img-2.png";
 import {
   FaReact,
   FaHtml5,
@@ -89,11 +90,12 @@ const Home = () => {
             a developer in the tech industry.
           </p>
           <button
+            onClick={() => navigate("/resume")}
             className={`rounded-2 px-3 py-2 ${
               isDark ? "btn-dark" : "btn-light"
             }`}
           >
-            Download Resume
+            View Resume
           </button>
         </motion.div>
 
@@ -103,7 +105,26 @@ const Home = () => {
           transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
           className="banner-c-size d-flex justify-content-center"
         >
-          <img src={MyImg} alt="my_img" loading="lazy" style={imgSize} />
+          {isDark ? (
+            <motion.img
+              whileHover={{ scale: [1, 0.95, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              src={MyImg1}
+              alt="my_img"
+              loading="lazy"
+              style={imgSize}
+            />
+          ) : (
+            <motion.img
+              whileHover={{ scale: [1, 0.95, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              src={MyImg2}
+              alt="my_img"
+              loading="lazy"
+              style={imgSize}
+              className="shadow-lg"
+            />
+          )}
         </motion.div>
       </div>
 
@@ -189,10 +210,10 @@ const Home = () => {
             <Oval
               height={40}
               width={40}
-              color="#4fa94d"
+              color="#ffffff"
               visible={true}
               ariaLabel="oval-loading"
-              secondaryColor="#4fa94d"
+              secondaryColor="#080c80"
               strokeWidth={2}
               strokeWidthSecondary={2}
             />

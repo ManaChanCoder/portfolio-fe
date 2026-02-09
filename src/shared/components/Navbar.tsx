@@ -102,7 +102,7 @@ export default function Navbar() {
             <Link
               key={v.id}
               to={v.path}
-              className={`fs-5 no-underline s-link w-auto ${
+              className={`fs-6 no-underline s-link w-auto ${
                 isDark ? "s-link-dark" : "s-link-light"
               } ${v.path === pathname ? "s-link-acitve" : ""}`}
             >
@@ -117,7 +117,7 @@ export default function Navbar() {
           <Link
             key={v.id}
             to={v.path}
-            className={`fs-5 no-underline s-link ${
+            className={`fs-6 no-underline s-link ${
               isDark ? "s-link-dark" : "s-link-light"
             } ${v.path === pathname ? "s-link-acitve" : ""}`}
           >
