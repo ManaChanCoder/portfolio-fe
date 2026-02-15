@@ -58,7 +58,6 @@ const Home = () => {
       behavior: "smooth",
     });
   };
-  console.log(isVisible);
 
   return (
     <div

@@ -12,6 +12,16 @@ type TAccountState = {
   login: (username: string, password: string) => Promise<{ success: boolean }>;
   logout: () => void;
   checkAuth: () => Promise<boolean>;
+
+  contactError: string | null;
+  contactSuccess: boolean;
+  sendContact: (payload: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }) => Promise<void>;
+  resetContactStatus: () => void;
 };
 
 export const accountStore = create<TAccountState>()(
@@ -21,9 +31,46 @@ export const accountStore = create<TAccountState>()(
       isLoggedIn: false,
       loading: false,
 
+      contactError: null,
+      contactSuccess: false,
+      sendContact: async (payload: {
+        name: string;
+        email: string;
+        subject: string;
+        message: string;
+      }) => {
+        set({
+          loading: true,
+          contactError: null,
+          contactSuccess: false,
+        });
+        try {
+          const res = await fetch(`${apiUrl}/account/contact`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            const data = await res.json();
+            throw new Error(data.message || "Failed to send message");
+          }
+          set({ loading: false, contactSuccess: true });
+        } catch (error) {
+          console.log((error as Error).message);
+          set({
+            loading: false,
+            contactError: (error as Error).message,
+            contactSuccess: false,
+          });
+        }
+      },
+
+      resetContactStatus: () =>
+        set({ contactSuccess: false, contactError: null }),
+
       login: async (
         username: string,
-        password: string
+        password: string,
       ): Promise<{ success: boolean }> => {
         set({ loading: true, isLoggedIn: false });
         try {
@@ -85,6 +132,6 @@ export const accountStore = create<TAccountState>()(
     }),
     {
       name: "account-storage",
-    }
-  )
+    },
+  ),
 );

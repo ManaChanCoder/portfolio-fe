@@ -40,7 +40,7 @@ const ProjectCard = ({
             src={urlImg}
             alt="project image"
             style={{ height: "230px", width: "100%" }}
-            className="rounded-top-3"
+            className="rounded-top-3 img-zoom"
           />
         </div>
 

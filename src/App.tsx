@@ -11,6 +11,7 @@ import ViewProject from "./pages/ViewProject";
 import UpdateProject from "./pages/UpdateProject";
 import Project from "./pages/Project";
 import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Project />} />
       <Route path="/resume" element={<Resume />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
 
       <Route path="/admin" element={<AdminLayout />}>

@@ -37,6 +37,11 @@ export default function Navbar() {
     },
     {
       id: 4,
+      name: "Contact",
+      path: "/contact",
+    },
+    {
+      id: 5,
       name: "Login",
       path: "/login",
     },
