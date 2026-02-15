@@ -155,7 +155,8 @@ const Contact = () => {
                       visible={true}
                       height="30"
                       width="30"
-                      color="#08f838"
+                      color="#ffffff"
+                      secondaryColor="#080c80"
                       ariaLabel="oval-loading"
                       wrapperStyle={{}}
                       wrapperClass=""
