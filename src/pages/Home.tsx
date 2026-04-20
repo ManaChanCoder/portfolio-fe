@@ -222,7 +222,17 @@ const Home = () => {
           Certifications During Intern Program
         </h1>
 
-        <div className="d-flex flex-column align-items-center align-items-lg-start flex-lg-row justify-content-center">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 0.5,
+            type: "spring",
+            stiffness: 50,
+          }}
+          className="d-flex flex-column align-items-center align-items-lg-start flex-lg-row justify-content-center"
+        >
           {internCertification.map((cert, index) => (
             <Certification
               key={index}
@@ -231,7 +241,7 @@ const Home = () => {
               content={cert.content}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <motion.div
