@@ -49,6 +49,15 @@
   overflow: hidden;
 }
 
+.cert-card-sizes {
+  width: 600px;
+  padding: 20px;
+}
+.cert-sizes {
+  width: 100%;
+  height: 250px;
+}
+
 /* image hover zoom */
 .img-zoom {
   transition: transform 200ms ease;
@@ -66,9 +75,20 @@
   .login-size {
     width: 70%;
   }
+  .category-title-size {
+    font-size: 2rem;
+  }
+  .cert-card-sizes {
+    width: 100%;
+    padding: 20px;
+  }
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .login-size {
     width: 50%;
+  }
+  .cert-card-sizes {
+    width: 100%;
+    padding: 20px;
   }
 }

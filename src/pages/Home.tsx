@@ -8,6 +8,7 @@ import Navbar from "../shared/components/Navbar";
 import Footer from "../shared/components/Footer";
 import ProjectCard from "../components/ProjectCard";
 import "./pages.css";
+import Certification from "../components/Certification";
 
 // store
 import { themeStore } from "../store/themeStore";
@@ -17,6 +18,9 @@ import { scrollBehavior } from "../store/themeStore";
 // img
 import MyImg1 from "../assets/img-1.jpg";
 import MyImg2 from "../assets/img-2.png";
+import DataEncoder from "../assets/Data Encoder - Saingga.png";
+import WebDeveloper from "../assets/Rhogenn Saingga_Web_Dev_Cert.png";
+
 import {
   FaReact,
   FaHtml5,
@@ -28,6 +32,12 @@ import {
 } from "react-icons/fa";
 import { SiMongodb, SiTailwindcss } from "react-icons/si";
 import { IoArrowUp } from "react-icons/io5";
+
+interface CertificationState {
+  img: string;
+  title: string;
+  content: string;
+}
 
 const Home = () => {
   const navigate = useNavigate();
@@ -58,6 +68,21 @@ const Home = () => {
       behavior: "smooth",
     });
   };
+
+  const internCertification: CertificationState[] = [
+    {
+      img: DataEncoder,
+      title: "Data Encoder",
+      content:
+        "During my internship at Ollopa Corporation (Ollopa LLC), I was responsible for managing and organizing hotel-related content on the company’s website by inputting and updating details such as pricing, accommodation packages, food offerings, ambiance descriptions, images, and other relevant information to keep the platform accurate, clear, and up to date. I also worked with the company’s digital resources, particularly eBook materials, where I reviewed content, selected appropriate titles, and transferred data into structured Excel sheets while ensuring consistency and accuracy. This experience helped me develop skills in data entry, content organization, and web content management while improving my attention to detail and ability to handle digital assets efficiently, contributing to the overall quality of the company’s online platform.",
+    },
+    {
+      img: WebDeveloper,
+      title: "Web Developer",
+      content:
+        "During my voluntary internship at SSBIFood Services Corporation, I worked as a Web Developer on a full-stack mentorship and e-learning platform where users can teach or enroll in courses. The system features AI integration to generate quizzes, exams, surveys, and course content, along with a subscription model that provides access to advanced AI capabilities such as image and video generation based on plan limits. Built using React, Node.js, Express.js, Prisma, and SQL, the project focuses on delivering a responsive, scalable, and user-friendly learning experience.      ",
+    },
+  ];
 
   return (
     <div
@@ -190,6 +215,23 @@ const Home = () => {
             </div>
           </motion.div>
         </motion.div>
+      </div>
+
+      <div className="">
+        <h1 className="fw-bold text-center mb-4 category-title-size">
+          Certifications During Intern Program
+        </h1>
+
+        <div className="d-flex flex-column align-items-center align-items-lg-start flex-lg-row justify-content-center">
+          {internCertification.map((cert, index) => (
+            <Certification
+              key={index}
+              img={cert.img}
+              title={cert.title}
+              content={cert.content}
+            />
+          ))}
+        </div>
       </div>
 
       <motion.div
